@@ -135,6 +135,16 @@ public class PlayMap extends Map {
 		g.setColor(Color.WHITE);
 		g.drawString("Tic Tac Toe", 110, 50);
 		
+		if(this.turn.equals("X")) {
+			g.setColor(Color.ORANGE);
+		} else {
+			g.setColor(Color.RED);
+		}
+		
+		g.setFont(new Font("Default", Font.PLAIN, 12));
+		g.drawString(this.turn + "'s Turn", 175, 70);
+		g.setColor(Color.WHITE);
+		
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
 				this.components[i][j].draw(g);
