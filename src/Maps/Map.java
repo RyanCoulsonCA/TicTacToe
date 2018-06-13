@@ -6,7 +6,7 @@ import java.awt.event.MouseMotionListener;
 
 public abstract class Map implements MouseListener, MouseMotionListener {
 
-	private MapHandler map;
+	protected MapHandler map;
 	
 	public Map(MapHandler m) {
 		this.map = m;

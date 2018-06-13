@@ -55,7 +55,9 @@ public class MenuMap extends Map {
 		for(int i = 0; i < this.buttons.size(); i++) {
 			CustomButton b = this.buttons.get(i);
 			if(b.wasClicked(e)) {
-				if(b.getText().equals("Quit")) {
+				if(b.getText().equals("Start")) {
+					this.map.setState(1);
+				} else if(b.getText().equals("Quit")) {
 					System.exit(0);
 				}
 			}

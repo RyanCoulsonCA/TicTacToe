@@ -19,6 +19,11 @@ public class MapHandler {
 		this.state = MENU;
 		
 		this.maps.add(new MenuMap(this));
+		this.maps.add(new PlayMap(this));
+	}
+	
+	public void setState(int s) {
+		this.state = s;
 	}
 	
 	public void draw(Graphics2D g) {
