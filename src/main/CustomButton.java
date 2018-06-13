@@ -3,7 +3,6 @@ package main;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 import java.awt.event.MouseEvent;
@@ -14,7 +13,6 @@ public class CustomButton {
 	private Font font;
 	private String text;
 	private int width, height, xpos, ypos;
-	private boolean hovering;
 	
 	public CustomButton(String s, int xpos, int ypos, int width, int height) {
 		this.text = s;
@@ -22,7 +20,6 @@ public class CustomButton {
 		this.ypos = ypos;
 		this.width = width;
 		this.height = height;
-		this.hovering = false;
 		
 		this.font = new Font("Default", Font.BOLD, 24);
 		this.color = Color.WHITE;
@@ -43,11 +40,7 @@ public class CustomButton {
 	public Font getFont() {
 		return this.font;
 	}
-	
-	public void setHovering(boolean b) {
-		this.hovering = b;
-	}
-		
+			
 	public boolean isHovering(MouseEvent me) {
 		if(this.xpos <= me.getX() && me.getX() <= (this.xpos+width)) {
 			if(this.ypos <= me.getY() && me.getY() <= (this.ypos+height)) {
@@ -74,7 +67,6 @@ public class CustomButton {
 		Color color = g.getColor();
 		Font font = g.getFont();
 		Stroke stroke = g.getStroke();
-		FontMetrics fm = g.getFontMetrics(this.font);
 				
 		g.setColor(this.color);
 		g.setFont(this.font);

@@ -41,8 +41,7 @@ public class PlayMap extends Map {
 		 * 
 		 * NOTE: this is super messy, will possibly clean up later
 		 */
-		
-		boolean win = false;
+
 		int consecutive = 0;
 		
 		// Check rows
@@ -151,6 +150,17 @@ public class PlayMap extends Map {
 			}
 		}
 		
+		// Action buttons
+		CustomButton button = new CustomButton("Restart", 50, 415, 125, 50);
+		button.setColor(new Color(100, 100, 100));
+		this.buttons.add(button);
+		button.draw(g);
+		
+		button = new CustomButton("Quit", 221, 415, 125, 50);
+		button.setColor(new Color(100, 100, 100));
+		this.buttons.add(button);
+		button.draw(g);
+		
 		g.setFont(font);
 		g.setColor(color);
 	}
@@ -158,6 +168,28 @@ public class PlayMap extends Map {
 	
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		
+		// Action buttons first
+		for(int i = 0; i < this.buttons.size(); i++) {
+			if(this.buttons.get(i).wasClicked(e)) {
+				if(this.buttons.get(i).getText().equals("Quit")) {
+					System.exit(0);
+				} else if(this.buttons.get(i).getText().equals("Restart")) {
+					this.buttons = new ArrayList<CustomButton>();
+					this.winners = new ArrayList<BoardComponent>();
+					this.components = new BoardComponent[3][3];
+					this.turn = "X"; // 0 = X; 1 = O
+					this.win = false;
+					
+					for(int j = 0; j < 3; j++) {
+						for(int k = 0; k < 3; k++) {
+							BoardComponent bc = new BoardComponent(50 + 100*j, 100 + 100*k, 100, 100);
+							this.components[j][k] = bc;
+						}
+					}
+				}
+			}
+		}
 		
 		for(int i = 0; i < 3; i++) {
 			for(int j = 0; j < 3; j++) {
