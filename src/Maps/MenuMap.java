@@ -42,6 +42,12 @@ public class MenuMap extends Map {
 		this.buttons.add(button);
 		button.draw(g);
 		
+		g.setColor(Color.RED);
+		g.fillRect(98, 253, 205, 15);
+		g.setColor(Color.WHITE);
+		g.setFont(new Font("Default", Font.PLAIN, 12));
+		g.drawString("coming soon", 165, 264);
+		
 		button = new CustomButton("Quit", 100, 280, 200, 50);
 		button.setColor(Color.GRAY);
 		this.buttons.add(button);

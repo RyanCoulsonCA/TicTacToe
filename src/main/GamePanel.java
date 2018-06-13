@@ -20,7 +20,7 @@ public class GamePanel extends JPanel implements MouseMotionListener, MouseListe
 	private static final long serialVersionUID = 1L;
 	public static final int WIDTH = 400;
 	public static final int HEIGHT = 500;
-	public static final float VERSION = 0.1f;
+	public static final float VERSION = 1.0f;
 	
 	MapHandler map;
 	
