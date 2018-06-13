@@ -10,7 +10,7 @@ public class BoardComponent {
 
 	private int xpos, ypos, width, height;
 	private String value;
-	private boolean hover;
+	private boolean hover, highlight;
 	
 	public BoardComponent(int x, int y) {
 		this.xpos = x;
@@ -43,6 +43,10 @@ public class BoardComponent {
 		this.hover = b;
 	}
 	
+	public void setHighlight(boolean b) {
+		this.highlight = b;
+	}
+	
 	public boolean wasClicked(MouseEvent me) {
 		if(this.xpos <= me.getX() && me.getX() <= (this.xpos+width)) {
 			if(this.ypos <= me.getY() && me.getY() <= (this.ypos+height)) {
@@ -58,7 +62,7 @@ public class BoardComponent {
 		
 		g.setFont(new Font("Default", Font.PLAIN, 48));
 		FontMetrics fm = g.getFontMetrics();
-		
+				
 		if(this.hover&&this.value.equals("n")) {
 			g.setColor(new Color(50,50,50));
 		} else {
@@ -77,6 +81,11 @@ public class BoardComponent {
 		
 		if(!this.value.equals("n")) {
 			g.drawString(this.value, this.xpos + (width - fm.stringWidth(this.value))/2, this.ypos+height/2 + 20);
+		}
+		
+		if(this.highlight) {
+			g.setColor(Color.YELLOW);
+			g.drawRect(xpos+1, ypos+1, width-2, height-2);
 		}
 		
 		g.setFont(f);
